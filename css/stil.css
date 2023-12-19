@@ -38,7 +38,8 @@ nav ul {
 }
 
 nav li {
-    margin: 0 10px; /* Smanjeno od 15px na 10px */
+    margin: 0 10px;
+    padding: 5px;
 }
 
 nav a {
@@ -46,6 +47,7 @@ nav a {
     color: #fff;
     font-weight: bold;
     font-size: 1.3em;
+    padding: 5px;
 }
 
 .dropdown {
@@ -58,8 +60,8 @@ nav a {
     background-color: #333;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    width: 120px; /* Prilagođena širina */
-    padding: 5px; /* Dodano padding na obje strane */
+    width: 150px;
+    padding: 5px;
 }
 
 .padajuci-sadrzaj .razmak {
@@ -74,15 +76,16 @@ nav a {
     display: none;
     position: absolute;
     top: 0;
-    left: 100%; /* Postavljeno na 100% umjesto 0 za desni prikaz */
+    left: 100%;
     background-color: #333;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    width: auto; /* Prilagođena širina */
-    height: auto; /* Prilagođena visina */
-    padding: 5px; /* Dodano padding na obje strane */
+    width: auto;
+    height: auto;
+    padding: 5px;
 }
 
-.padajuci-sadrzaj:hover .submenu {
+/* Dodano pravilo za prikazivanje submenua kada je miš iznad "Traži po proizvođaču" */
+.dropdown:hover .padajuci-sadrzaj:hover {
     display: block;
 }
 
@@ -90,5 +93,3 @@ nav a {
     display: block;
     margin-top: 5px;
 }
-
-

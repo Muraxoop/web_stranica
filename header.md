@@ -45,57 +45,14 @@
         </nav>
     </header>
 
-    <div class="video-container">
-        <video class="background-video" autoplay muted loop>
-            <source src="../Images/Lazante.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <img class="background-image" src="../Images/showroom.webp" alt="Showroom">
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <style>
-        .video-container {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            height: 100vh;
+        /* Dodatni stilovi za hover dropdown */
+        .dropdown-submenu:hover .submenu {
+        display: block;
+        left: 100%; /* Pomicanje submenija na desnu stranu */
+        top: 50%; /* Postavljanje na istu visinu kao i roditeljski li element */
         }
-
-        .background-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .background-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .background-video {
-                display: none;
-            }
-
-            .background-image {
-                display: block;
-            }
-        }
-
-                /* Dodatni stilovi za hover dropdown */
-                .dropdown-submenu:hover .submenu {
-            display: block;
-            left: 100%; /* Pomicanje submenija na desnu stranu */
-            top: 50%; /* Postavljanje na istu visinu kao i roditeljski li element */
-       
-        }
-        
-
+    
     </style>
 
 </body>
