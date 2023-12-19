@@ -1,84 +1,86 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-
-//const dbConfig = require("./db.config.js");
 var mysql = require('mysql');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// connection configurations
+// Connection configurations
 var dbConn = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "pzi"
-    });
+    host: "student.veleri.hr",
+    port: 3306,
+    user: "khoblajpa",
+    password: "11",
+    database: "Inventar"
+});
 
-// connect to database
+// Connect to the database
 dbConn.connect();
 
-
-app.get("/korisnik", function (request, response) {
-
-    dbConn.query('SELECT * FROM korisnik', function (error, results, fields) {
+// Prikaz svih automobila u inventaru
+app.get("/inventar", function (request, response) {
+    dbConn.query('SELECT * FROM Inventar', function (error, results, fields) {
         if (error) throw error;
-        return response.send({ error: false, data: results, message: 'READ svi korisnici.' });
-        });
-    //return response.send({message: "CREATE" + ime + prezime});
-    
-})
-
-// Retrieve useful_part with id
-app.get('/korisnik/:id', function (request, response) {
-    let useful_part_id = request.params.id;
-    if (!useful_part_id) {
-    return response.status(400).send({ error: true, message: 'Molim dajte id od korisnika' });
-    }
-    dbConn.query('SELECT * FROM korisnik id=?', useful_part_id, function
-    (error, results, fields) {
-    if (error) throw error;
-    return response.send({ error: false, data: results[0], message:'Popis korisnika pod tim ID.' });
-    });
-    });
-    
-// Delete korisnik with id
-app.delete('/korisnik/:id', function (request, response) {
-    let korisnik_id = request.params.id;
-    if (!korisnik_id) {
-        return response.status(400).send({ error: true, message: 'Molim dajte korisnik_id' });
-    }
-    dbConn.query('DELETE FROM korisnik WHERE id = ?', korisnik_id, function (error, results, fields) {
-        if (error) throw error;
-        if (results.affectedRows === 0) {
-            return response.send({ error: true, message: 'Korisnik nije naden.' });
-        }
-        return response.send({ error: false, message: 'Korisnik uspjesno izbrisan ' });
+        return response.send({ error: false, data: results, message: 'Popis svih automobila u inventaru.' });
     });
 });
 
-app.post('/korisnik', function (request, response) {
-    var ime = request.body.ime;
-    var prezime = request.body.prezime;
-    var tel = request.body.tel;
-    dbConn.query('INSERT INTO korisnik VALUES (NULL, ?, ?, ?)'), [ime, prezime,tel], function (error, results, fields){
-        if (error) throw error;
-        return response.send ({error: false, data: results, message: 'INSERT korisnik ime='+ime});
+// Prikaz informacija o automobilu prema ID-u
+app.get('/inventar/:id', function (request, response) {
+    let vozilo_id = request.params.id;
+    if (!vozilo_id) {
+        return response.status(400).send({ error: true, message: 'Molim dajte ID automobila' });
     }
-})
-
-app.put('/korisnik', function (request, response) {
-    var id = request.params.id;
-    var tel = request.body.tel;
-    dbConn.query('UPDATE korisnik SET tel=? WHERE id=?'), [tel, id], function (error, results, fields){
+    dbConn.query('SELECT * FROM Inventar WHERE VoziloID=?', vozilo_id, function (error, results, fields) {
         if (error) throw error;
-        return response.send ({error: false, data: results, message: 'UPDATE korisnik id='+id+' tel=' +tel });
+        return response.send({ error: false, data: results[0], message: 'Podaci o automobilu s ID-om ' + vozilo_id });
+    });
+});
+
+// Brisanje automobila iz inventara prema ID-u
+app.delete('/inventar/:id', function (request, response) {
+    let vozilo_id = request.params.id;
+    if (!vozilo_id) {
+        return response.status(400).send({ error: true, message: 'Molim dajte ID automobila' });
     }
-})
+    dbConn.query('DELETE FROM Inventar WHERE VoziloID = ?', vozilo_id, function (error, results, fields) {
+        if (error) throw error;
+        if (results.affectedRows === 0) {
+            return response.send({ error: true, message: 'Automobil nije pronađen.' });
+        }
+        return response.send({ error: false, message: 'Automobil uspješno izbrisan.' });
+    });
+});
 
+// Dodavanje novog automobila u inventar
+app.post('/inventar', function (request, response) {
+    var proizvodac = request.body.proizvodac;
+    var model = request.body.model;
+    var godinaProizvodnje = request.body.godinaProizvodnje;
 
-// set port
+    dbConn.query('INSERT INTO Inventar (Proizvodac, Model, GodinaProizvodnje) VALUES (?, ?, ?)',
+        [proizvodac, model, godinaProizvodnje], function (error, results, fields) {
+            if (error) throw error;
+            return response.send({ error: false, data: results, message: 'Dodan novi automobil: ' + proizvodac + ' ' + model });
+        });
+});
+
+// Ažuriranje informacija o automobilu u inventaru prema ID-u
+app.put('/inventar/:id', function (request, response) {
+    var vozilo_id = request.params.id;
+    var proizvodac = request.body.proizvodac;
+    var model = request.body.model;
+    var godinaProizvodnje = request.body.godinaProizvodnje;
+
+    dbConn.query('UPDATE Inventar SET Proizvodac=?, Model=?, GodinaProizvodnje=? WHERE VoziloID=?',
+        [proizvodac, model, godinaProizvodnje, vozilo_id], function (error, results, fields) {
+            if (error) throw error;
+            return response.send({ error: false, data: results, message: 'Ažuriran automobil s ID-om ' + vozilo_id });
+        });
+});
+
+// Postavljanje porta
 app.listen(3000, function () {
     console.log('Node app is running on port 3000');
 });
