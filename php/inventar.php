@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="hr">
 
+<!-- Skripte za jQuery i Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/stil.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>Mura Luxury Motorcars</title>
 </head>
 
 <body>
 
-    <!-- Zaglavlje s logotipom i navigacijom -->
     <header class="sticky-header">
         <div class="logo">
             <a href="index.html">
@@ -46,22 +49,53 @@
         </nav>
     </header>
 
-    <!-- Video ili slika u pozadini -->
-    <div class="video-container">
-        <video class="background-video" autoplay muted loop>
-            <source src="../Images/Lazante.mp4" type="video/mp4">
-            Vaš preglednik ne podržava oznaku videa.
-        </video>
-        <img class="background-image" src="../Images/showroom.webp" alt="Showroom">
-    </div>
+    <?php
+    $servername = "student.veleri.hr";
+    $port = 3360;
+    $username = "khoblajp";
+    $password = "11";
+    $dbname = "Inventar";
 
-    <!-- Skripte za jQuery i Bootstrap -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT Proizvodac, Model, GodinaProizvodnje, Cijena FROM Inventar";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Prolazak kroz rezultate upita
+        while ($row = $result->fetch_assoc()) {
+            // Koristite podatke iz baze za popunjavanje boxa
+    ?>
+    <br/><br/><br/>
+            <!-- Box s informacijama o autu -->
+            <div class="car-info-box">
+                <div class="car-image">
+                    <img src="putanja_do_slike.jpg" alt="Slika auta">
+                </div>
+                <div class="car-details">
+                    <div class="car-title"><?php echo $row["Proizvodac"] . " " . $row["Model"]; ?></div>
+                    <div class="car-mileage">Godina proizvodnje: <?php echo $row["GodinaProizvodnje"]; ?></div>
+                    <div class="car-price">Cijena: <?php echo $row ["Cijena"]; ?></div>
+                </div>
+            </div>
+ <br/><br/><br/>
+
+ <?php
+        }
+    } else {
+        echo "Nema rezultata";
+    }
+
+    $conn->close();
+    ?>
 
     <!-- Dodatak ispod videa za pretragu po proizvođaču -->
     <div class="search-by-manufacturer">
-        <li class="manufacturer-link">Traži po proizvođaču</>
+        <li class="manufacturer-link">Traži po proizvođaču</li>
     </div>
 
     <!-- Dodani logotipi ispod "Traži po proizvođaču" -->
@@ -77,39 +111,7 @@
         <a href="Chevrolet.html"><img src="../images/Chevrolet-logo.webp" alt="Chevrolet"></a>
     </div>
 
-    <!-- Stilovi -->
     <style>
-        .video-container {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            height: 100vh;
-            background-color: black; /* Crna pozadina ispod videa */
-        }
-
-        .background-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .background-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .background-video {
-                display: none;
-            }
-
-            .background-image {
-                display: block;
-            }
-        }
-
         /* Dodatni stilovi za hover dropdown */
         .dropdown-submenu:hover .submenu {
             display: block;
@@ -130,7 +132,7 @@
 
         .manufacturer-logos img {
             display: block;
-            height: 120px; 
+            height: 120px;
             height: auto; /* Omogućuje responzivnost */
         }
 
@@ -155,6 +157,49 @@
             text-decoration: none;
             font-weight: bold;
             display: block;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black; /* Postavljanje crne pozadine na cijelu stranicu */
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            margin: 0; /* Uklanja vanjski margin od stranice */
+        }
+
+        .car-info-box {
+            display: flex;
+            margin-top: 7rem;
+            margin-left: 10%; /* Dodano za smanjenje širine s lijeve strane */
+            margin-right: 10%; /* Dodano za smanjenje širine s desne strane */
+        }
+
+        .car-image {
+            flex: 1;
+            margin-right: 1rem;
+        }
+
+        .car-details {
+            flex: 1;
+            padding: 1rem;
+            background-color: #f2f2f2; /* Siva boja pozadine */
+            border: 1px solid #ddd; /* Rub */
+            border-radius: 5px; /* Zaobljeni rubovi */
+        }
+
+        .car-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .car-mileage,
+        .car-price {
+            font-size: 16px;
+            margin-bottom: 5px;
         }
     </style>
 
