@@ -49,12 +49,12 @@
         </nav>
     </header>
 
+<!-- ovdje se dalje pise -->
 
 
 
 
-
-
+<!-- do ovdje -->
 
         <!-- Dodatak ispod videa za pretragu po proizvođaču -->
         <div class="search-by-manufacturer">
