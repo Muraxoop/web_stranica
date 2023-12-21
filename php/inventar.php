@@ -52,9 +52,9 @@
     <?php
     $servername = "student.veleri.hr";
     $port = 3360;
-    $username = "khoblajp";
+    $username = "khoblajpa";
     $password = "11";
-    $dbname = "Inventar";
+    $dbname = "khoblajpa";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
