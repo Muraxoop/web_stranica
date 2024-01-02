@@ -33,18 +33,18 @@
                             <ul class="submenu dropdown-menu">
                                 <li><a href="Audi.html">AUDI</a></li>
                                 <li><a href="BMW.html">BMW</a></li>
-                                <li class="proizvodac"><a href="Chevrolet.html">CHEVROLET</a></li>
-                                <li class="proizvodac"><a href="Ferrari.html">FERRARI</a></li>
-                                <li class="proizvodac"><a href="Ford.html">FORD</a></li>
-                                <li class="proizvodac"><a href="Lamborghini.html">LAMBORGHINI</a></li>
-                                <li class="proizvodac"><a href="McLaren.html">MCLAREN</a></li>
-                                <li class="proizvodac"><a href="Mercedes.html">MERCEDES</a></li>
-                                <li class="proizvodac"><a href="Porsche.html">PORSCHE</a></li>
+                                <li class="proizvodac"><a href="../html/Chevrolet.html">CHEVROLET</a></li>
+                                <li class="proizvodac"><a href="../html/Ferrari.html">FERRARI</a></li>
+                                <li class="proizvodac"><a href="../html/Ford.html">FORD</a></li>
+                                <li class="proizvodac"><a href="../html/Lamborghini.html">LAMBORGHINI</a></li>
+                                <li class="proizvodac"><a href="../html/McLaren.html">MCLAREN</a></li>
+                                <li class="proizvodac"><a href="../html/Mercedes.html">MERCEDES</a></li>
+                                <li class="proizvodac"><a href="../html/Porsche.html">PORSCHE</a></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="../html/kontakt.html">Kontakt</a></li>
             </ul>
         </nav>
     </header>

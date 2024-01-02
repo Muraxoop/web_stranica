@@ -12,11 +12,15 @@ var dbConn = mysql.createConnection({
     port: 3306,
     user: "khoblajpa",
     password: "11",
-    database: "Inventar"
+    database: "khoblajpa"
 });
 
 // Connect to the database
 dbConn.connect();
+
+// Middleware za obradu podataka u zahtjevu
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Prikaz svih automobila u inventaru
 app.get("/inventar", function (request, response) {
@@ -55,9 +59,9 @@ app.delete('/inventar/:id', function (request, response) {
 
 // Dodavanje novog automobila u inventar
 app.post('/inventar', function (request, response) {
-    var proizvodac = request.body.proizvodac;
-    var model = request.body.model;
-    var godinaProizvodnje = request.body.godinaProizvodnje;
+    var proizvodac = request.body.Proizvodac;
+    var model = request.body.Model;
+    var godinaProizvodnje = request.body.GodinaProizvodnje;
 
     dbConn.query('INSERT INTO Inventar (Proizvodac, Model, GodinaProizvodnje) VALUES (?, ?, ?)',
         [proizvodac, model, godinaProizvodnje], function (error, results, fields) {
@@ -69,9 +73,9 @@ app.post('/inventar', function (request, response) {
 // Ažuriranje informacija o automobilu u inventaru prema ID-u
 app.put('/inventar/:id', function (request, response) {
     var vozilo_id = request.params.id;
-    var proizvodac = request.body.proizvodac;
-    var model = request.body.model;
-    var godinaProizvodnje = request.body.godinaProizvodnje;
+    var proizvodac = request.body.Proizvodac;
+    var model = request.body.Model;
+    var godinaProizvodnje = request.body.GodinaProizvodnje;
 
     dbConn.query('UPDATE Inventar SET Proizvodac=?, Model=?, GodinaProizvodnje=? WHERE VoziloID=?',
         [proizvodac, model, godinaProizvodnje, vozilo_id], function (error, results, fields) {
@@ -81,6 +85,6 @@ app.put('/inventar/:id', function (request, response) {
 });
 
 // Postavljanje porta
-app.listen(3000, function () {
-    console.log('Node app is running on port 3000');
+app.listen(port, function () {
+    console.log(`Node app is running on port ${port}`);
 });
