@@ -17,17 +17,17 @@
 
     <header class="sticky-header">
         <div class="logo">
-            <a href="index.html">
+            <a href="../html/index.html">
                 <img src="../images/Logo.png" alt="Logo">
             </a>
         </div>
         <nav>
             <ul class="nav navbar-nav">
-                <li><a href="ONama">O nama</a></li>
+                <li><a href="ONama.html">O nama</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kupi vozilo <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="inventar.html">Inventar</a></li>
+                        <li><a href="inventar.php">Inventar</a></li>
                         <li class="dropdown-submenu">
                             <a class="test" href="#">Traži po proizvođaču</a>
                             <ul class="submenu dropdown-menu">
@@ -48,10 +48,9 @@
             </ul>
         </nav>
     </header>
-
+    
     <?php
     $servername = "student.veleri.hr";
-    $port = 3360;
     $username = "khoblajpa";
     $password = "11";
     $dbname = "khoblajpa";
@@ -70,19 +69,39 @@
         while ($row = $result->fetch_assoc()) {
             // Koristite podatke iz baze za popunjavanje boxa
     ?>
-    <br/><br/><br/>
-            <!-- Box s informacijama o autu -->
-            <div class="car-info-box">
-                <div class="car-image">
-                    <img src="putanja_do_slike.jpg" alt="Slika auta">
-                </div>
-                <div class="car-details">
-                    <div class="car-title"><?php echo $row["Proizvodac"] . " " . $row["Model"]; ?></div>
-                    <div class="car-mileage">Godina proizvodnje: <?php echo $row["GodinaProizvodnje"]; ?></div>
-                    <div class="car-price">Cijena: <?php echo $row ["Cijena"]; ?></div>
-                </div>
-            </div>
- <br/><br/><br/>
+    
+    <br/><br/>   
+<!-- Box s informacijama o autu -->
+<div class="car-info-box">
+    <div class="car-image">
+        <?php
+        // Provjeri postoji li putanja do slike u bazi
+        if (!empty($row["Slika"])) {
+            $imagePath = $row["Slika"];
+        
+            // Provjeri je li putanja apsolutna (počinje s http:// ili https://)
+            if (strpos($imagePath, "http://") === 0 || strpos($imagePath, "https://") === 0) {
+                // Prikazi sliku ako je apsolutna putanja
+                echo "<img src='$imagePath' alt='Slika auta'>";
+            } else {
+                // Prikazi sliku ako je relativna putanja (npr. "images/slika.jpg")
+                echo "<img src='../$imagePath' alt='Slika auta'>";
+            }
+        } else {
+            // Prikazi neku zamjensku sliku ili poruku ako nema slike
+            echo "<img src='putanja_do_default_slike.jpg' alt='Nema dostupne slike'>";
+        }
+        
+        ?>
+    </div>
+    <div class="car-details">
+        <div class="car-title"><?php echo $row["Proizvodac"] . " " . $row["Model"]; ?></div>
+        <div class="car-mileage">Godina proizvodnje: <?php echo $row["GodinaProizvodnje"]; ?></div>
+        <div class="car-price">Cijena: <?php echo $row["Cijena"]; ?> €</div>
+    </div>
+</div>
+<br/><br/>
+
 
  <?php
         }
@@ -100,15 +119,15 @@
 
     <!-- Dodani logotipi ispod "Traži po proizvođaču" -->
     <div class="manufacturer-logos">
-        <a href="Porsche.html"><img src="../images/porsche-logo.jpg" alt="Porsche"></a>
-        <a href="Audi.html"><img src="../images/audi-logo.jpg" alt="Audi"></a>
-        <a href="Lamborghini.html"><img src="../images/lamborghini-logo.jpg" alt="Lamborghini"></a>
-        <a href="BMW.html"><img src="../images/bmw-logo.png" alt="BMW"></a>
-        <a href="Ferrari.html"><img src="../images/ferrari-logo.png" alt="Ferrari"></a>
-        <a href="Mercedes.html"><img src="../images/mercedes-logo.png" alt="Mercedes"></a>
-        <a href="McLaren.html"><img src="../images/mclaren-logo.png" alt="McLaren"></a>
-        <a href="Ford.html"><img src="../images/ford-logo.jpg" alt="Ford"></a>
-        <a href="Chevrolet.html"><img src="../images/Chevrolet-logo.webp" alt="Chevrolet"></a>
+        <a href="../html/Porsche.html"><img src="../images/porsche-logo.jpg" alt="Porsche"></a>
+        <a href="../html/Audi.html"><img src="../images/audi-logo.jpg" alt="Audi"></a>
+        <a href="../html/Lamborghini.html"><img src="../images/lamborghini-logo.jpg" alt="Lamborghini"></a>
+        <a href="../html/BMW.html"><img src="../images/bmw-logo.png" alt="BMW"></a>
+        <a href="../html/Ferrari.html"><img src="../images/ferrari-logo.png" alt="Ferrari"></a>
+        <a href="../html/Mercedes.html"><img src="../images/mercedes-logo.png" alt="Mercedes"></a>
+        <a href="../html/McLaren.html"><img src="../images/mclaren-logo.png" alt="McLaren"></a>
+        <a href="../html/Ford.html"><img src="../images/ford-logo.jpg" alt="Ford"></a>
+        <a href="../html/Chevrolet.html"><img src="../images/Chevrolet-logo.webp" alt="Chevrolet"></a>
     </div>
 
     <style>
@@ -164,10 +183,6 @@
             padding: 0;
             background-color: black; /* Postavljanje crne pozadine na cijelu stranicu */
             font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            margin: 0; /* Uklanja vanjski margin od stranice */
         }
 
         .car-info-box {
