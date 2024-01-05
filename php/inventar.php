@@ -61,8 +61,9 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT Proizvodac, Model, GodinaProizvodnje, Cijena FROM Inventar";
+    $sql = "SELECT * FROM Inventar ORDER BY Proizvodac, Model";
     $result = $conn->query($sql);
+    
 
     if ($result->num_rows > 0) {
         // Prolazak kroz rezultate upita
@@ -70,37 +71,38 @@
             // Koristite podatke iz baze za popunjavanje boxa
     ?>
     
-    <br/><br/>   
+    <br/>  
 <!-- Box s informacijama o autu -->
 <div class="car-info-box">
     <div class="car-image">
-        <?php
-        // Provjeri postoji li putanja do slike u bazi
-        if (!empty($row["Slika"])) {
-            $imagePath = $row["Slika"];
-        
-            // Provjeri je li putanja apsolutna (počinje s http:// ili https://)
-            if (strpos($imagePath, "http://") === 0 || strpos($imagePath, "https://") === 0) {
-                // Prikazi sliku ako je apsolutna putanja
-                echo "<img src='$imagePath' alt='Slika auta'>";
-            } else {
-                // Prikazi sliku ako je relativna putanja (npr. "images/slika.jpg")
-                echo "<img src='../$imagePath' alt='Slika auta'>";
-            }
-        } else {
-            // Prikazi neku zamjensku sliku ili poruku ako nema slike
-            echo "<img src='putanja_do_default_slike.jpg' alt='Nema dostupne slike'>";
-        }
-        
-        ?>
+    <?php
+// Provjeri postoji li slika u bazi
+if (!empty($row["Slika"])) {
+    $imageData = $row["Slika"];
+
+    // Prikazi sliku ako postoji base64 podaci
+    echo "<img src='data:image/jpg;base64, $imageData' alt='Slika auta'>";
+    echo "<img src='data:image/jpg;base64, $imageData' alt='Slika auta'>";
+} else {
+    // Prikazi zamjensku sliku ili poruku ako nema slike
+    echo "<img src='putanja_do_default_slike.jpg' alt='Nema dostupne slike'>";
+}
+?>
     </div>
     <div class="car-details">
         <div class="car-title"><?php echo $row["Proizvodac"] . " " . $row["Model"]; ?></div>
-        <div class="car-mileage">Godina proizvodnje: <?php echo $row["GodinaProizvodnje"]; ?></div>
-        <div class="car-price">Cijena: <?php echo $row["Cijena"]; ?> €</div>
+        <div class="car-mileage">Godina proizvodnje: <?php echo isset($row["GodinaProizvodnje"]) ? $row["GodinaProizvodnje"] : ''; ?></div>
+        <div class="car-mileage">Cijena: <?php echo isset($row["Cijena"]) ? $row["Cijena"] . ' €' : ''; ?></div>
+        <div class="car-mileage">Boja vozila: <?php echo isset($row["BojaVozila"]) ? $row["BojaVozila"] : ''; ?></div>
+        <div class="car-mileage">Vrsta motora: <?php echo isset($row["VrstaMotora"]) ? $row["VrstaMotora"] : ''; ?></div>
+        <div class="car-mileage">Snaga motora: <?php echo isset($row["SnagaMotora"]) ? $row["SnagaMotora"] . ' KS' : ''; ?></div>
+        <div class="car-mileage">Vrsta pogona: <?php echo isset($row["VrstaPogona"]) ? $row["VrstaPogona"] : ''; ?></div>
+        <div class="car-mileage">Maksimalna brzina: <?php echo isset($row["MaksimalnaBrzina"]) ? $row["MaksimalnaBrzina"] . ' km/h' : ''; ?></div>
+        <div class="car-mileage">Oprema: <?php echo isset($row["Oprema"]) ? $row["Oprema"] : ''; ?></div>
+
     </div>
 </div>
-<br/><br/>
+<br/>
 
 
  <?php
@@ -111,7 +113,7 @@
 
     $conn->close();
     ?>
-
+<br/><br/>
     <!-- Dodatak ispod videa za pretragu po proizvođaču -->
     <div class="search-by-manufacturer">
         <li class="manufacturer-link">Traži po proizvođaču</li>
@@ -195,6 +197,17 @@
         .car-image {
             flex: 1;
             margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            min-height: 150px;
+        }
+
+        .car-image img {
+            display: block;
+            max-height: 100%;
+            max-width: 100%;
+            height: auto;
+            width: auto;
         }
 
         .car-details {
