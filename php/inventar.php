@@ -82,7 +82,7 @@ if (!empty($row["Slika"])) {
 
     // Prikazi sliku ako postoji base64 podaci
     echo "<img src='data:image/jpg;base64, $imageData' alt='Slika auta'>";
-    echo "<img src='data:image/jpg;base64, $imageData' alt='Slika auta'>";
+    //echo "<img src='data:image/jpg;base64, $imageData' alt='Slika auta'>";
 } else {
     // Prikazi zamjensku sliku ili poruku ako nema slike
     echo "<img src='putanja_do_default_slike.jpg' alt='Nema dostupne slike'>";
