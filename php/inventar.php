@@ -23,23 +23,23 @@
         </div>
         <nav>
             <ul class="nav navbar-nav">
-                <li><a href="ONama.html">O nama</a></li>
+                <li><a href="../html/ONama.html">O nama</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kupi vozilo <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="inventar.php">Inventar</a></li>
+                        <li><a href="../php/inventar.php">Inventar</a></li>
                         <li class="dropdown-submenu">
                             <a class="test" href="#">Traži po proizvođaču</a>
                             <ul class="submenu dropdown-menu">
-                                <li><a href="Audi.html">AUDI</a></li>
-                                <li><a href="BMW.html">BMW</a></li>
-                                <li class="proizvodac"><a href="../html/Chevrolet.html">CHEVROLET</a></li>
-                                <li class="proizvodac"><a href="../html/Ferrari.html">FERRARI</a></li>
-                                <li class="proizvodac"><a href="../html/Ford.html">FORD</a></li>
-                                <li class="proizvodac"><a href="../html/Lamborghini.html">LAMBORGHINI</a></li>
-                                <li class="proizvodac"><a href="../html/McLaren.html">MCLAREN</a></li>
-                                <li class="proizvodac"><a href="../html/Mercedes.html">MERCEDES</a></li>
-                                <li class="proizvodac"><a href="../html/Porsche.html">PORSCHE</a></li>
+                                <li class="proizvodac"><a href="../php/Audi.php">CHEVROLET</a></li>
+                                <li class="proizvodac"><a href="../php/BMW.php">CHEVROLET</a></li>
+                                <li class="proizvodac"><a href="../php/Chevrolet.php">CHEVROLET</a></li>
+                                <li class="proizvodac"><a href="../php/Ferrari.php">FERRARI</a></li>
+                                <li class="proizvodac"><a href="../php/Ford.php">FORD</a></li>
+                                <li class="proizvodac"><a href="../php/Lamborghini.php">LAMBORGHINI</a></li>
+                                <li class="proizvodac"><a href="../php/McLaren.php">MCLAREN</a></li>
+                                <li class="proizvodac"><a href="../php/Mercedes.php">MERCEDES</a></li>
+                                <li class="proizvodac"><a href="../php/Porsche.php">PORSCHE</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -121,15 +121,15 @@ if (!empty($row["Slika"])) {
 
     <!-- Dodani logotipi ispod "Traži po proizvođaču" -->
     <div class="manufacturer-logos">
-        <a href="../html/Porsche.html"><img src="../images/porsche-logo.jpg" alt="Porsche"></a>
-        <a href="../html/Audi.html"><img src="../images/audi-logo.jpg" alt="Audi"></a>
-        <a href="../html/Lamborghini.html"><img src="../images/lamborghini-logo.jpg" alt="Lamborghini"></a>
-        <a href="../html/BMW.html"><img src="../images/bmw-logo.png" alt="BMW"></a>
-        <a href="../html/Ferrari.html"><img src="../images/ferrari-logo.png" alt="Ferrari"></a>
-        <a href="../html/Mercedes.html"><img src="../images/mercedes-logo.png" alt="Mercedes"></a>
-        <a href="../html/McLaren.html"><img src="../images/mclaren-logo.png" alt="McLaren"></a>
-        <a href="../html/Ford.html"><img src="../images/ford-logo.jpg" alt="Ford"></a>
-        <a href="../html/Chevrolet.html"><img src="../images/Chevrolet-logo.webp" alt="Chevrolet"></a>
+        <a href="../php/Porsche.php"><img src="../images/porsche-logo.jpg" alt="Porsche"></a>
+        <a href="../php/Audi.php"><img src="../images/audi-logo.jpg" alt="Audi"></a>
+        <a href="../php/Lamborghini.php"><img src="../images/lamborghini-logo.jpg" alt="Lamborghini"></a>
+        <a href="../php/BMW.php"><img src="../images/bmw-logo.png" alt="BMW"></a>
+        <a href="../php/Ferrari.php"><img src="../images/ferrari-logo.png" alt="Ferrari"></a>
+        <a href="../php/Mercedes.php"><img src="../images/mercedes-logo.png" alt="Mercedes"></a>
+        <a href="../php/McLaren.php"><img src="../images/mclaren-logo.png" alt="McLaren"></a>
+        <a href="../php/Ford.php"><img src="../images/ford-logo.jpg" alt="Ford"></a>
+        <a href="../php/Chevrolet.php"><img src="../images/Chevrolet-logo.webp" alt="Chevrolet"></a>
     </div>
 
     <style>
