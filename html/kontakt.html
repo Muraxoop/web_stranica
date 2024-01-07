@@ -1,58 +1,211 @@
 <!DOCTYPE html>
 <html lang="hr">
 
+<!-- Skripte za jQuery i Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/stil.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <title>Mura </title>
+    <title>Mura Luxury Motorcars</title>
 </head>
 
 <body>
 
     <header class="sticky-header">
         <div class="logo">
-            <a href="index.html">
+            <a href="../html/index.html">
                 <img src="../images/Logo.png" alt="Logo">
             </a>
         </div>
         <nav>
             <ul class="nav navbar-nav">
-                <li><a href="ONama">O nama</a></li>
+                <li><a href="../html/ONama.html">O nama</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kupi vozilo <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="inventar.html">Inventar</a></li>
+                        <li><a href="../php/inventar.php">Inventar</a></li>
                         <li class="dropdown-submenu">
                             <a class="test" href="#">Traži po proizvođaču</a>
                             <ul class="submenu dropdown-menu">
-                                <li><a href="Audi.html">AUDI</a></li>
-                                <li><a href="BMW.html">BMW</a></li>
-                                <li class="proizvodac"><a href="Chevrolet.html">CHEVROLET</a></li>
-                                <li class="proizvodac"><a href="Ferrari.html">FERRARI</a></li>
-                                <li class="proizvodac"><a href="Ford.html">FORD</a></li>
-                                <li class="proizvodac"><a href="Lamborghini.html">LAMBORGHINI</a></li>
-                                <li class="proizvodac"><a href="McLaren.html">MCLAREN</a></li>
-                                <li class="proizvodac"><a href="Mercedes.html">MERCEDES</a></li>
-                                <li class="proizvodac"><a href="Porsche.html">PORSCHE</a></li>
+                                <li class="proizvodac"><a href="../php/Audi.php">AUDI</a></li>
+                                <li class="proizvodac"><a href="../php/BMW.php">BMW</a></li>
+                                <li class="proizvodac"><a href="../php/Chevrolet.php">CHEVROLET</a></li>
+                                <li class="proizvodac"><a href="../php/Ferrari.php">FERRARI</a></li>
+                                <li class="proizvodac"><a href="../php/Ford.php">FORD</a></li>
+                                <li class="proizvodac"><a href="../php/Lamborghini.php">LAMBORGHINI</a></li>
+                                <li class="proizvodac"><a href="../php/McLaren.php">MCLAREN</a></li>
+                                <li class="proizvodac"><a href="../php/Mercedes.php">MERCEDES</a></li>
+                                <li class="proizvodac"><a href="../php/Porsche.php">PORSCHE</a></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="../html/kontakt.html">Kontakt</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Video ili slika u pozadini -->
+    <div class="video-container">
+        <video class="background-video" autoplay muted loop>
+            <source src="../Images/Lazante.mp4" type="video/mp4">
+            Vaš preglednik ne podržava oznaku videa.
+        </video>
+        <img class="background-image" src="../Images/showroom.webp" alt="Showroom">
+        <div class="overlay">
+            <div class="text-container">
+                <div class="car-details">
+                    <div class="car-mileage">Godina proizvodnje: 2022</div>
+                    <div class="car-mileage">Cijena: $50,000</div>
+                    <div class="car-mileage">Boja vozila: Crna</div>
+                    <div class="car-mileage">Vrsta motora: Benzinski</div>
+                    <div class="car-mileage">Snaga motora: 300 KS</div>
+                    <div class="car-mileage">Vrsta pogona: Prednji</div>
+                    <div class="car-mileage">Maksimalna brzina: 200 km/h</div>
+                    <div class="car-mileage">Oprema: Klima, Navigacija, Kožna sjedala</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dodatak ispod videa za pretragu po proizvođaču -->
+    <div class="search-by-manufacturer">
+        <li class="manufacturer-link">Traži po proizvođaču</li>
+    </div>
+
+    <!-- Dodani logotipi ispod "Traži po proizvođaču" -->
+    <div class="manufacturer-logos">
+        <a href="../php/Porsche.php"><img src="../images/porsche-logo.jpg" alt="Porsche"></a>
+        <a href="../php/Audi.php"><img src="../images/audi-logo.jpg" alt="Audi"></a>
+        <a href="../php/Lamborghini.php"><img src="../images/lamborghini-logo.jpg" alt="Lamborghini"></a>
+        <a href="../php/BMW.php"><img src="../images/bmw-logo.png" alt="BMW"></a>
+        <a href="../php/Ferrari.php"><img src="../images/ferrari-logo.png" alt="Ferrari"></a>
+        <a href="../php/Mercedes.php"><img src="../images/mercedes-logo.png" alt="Mercedes"></a>
+        <a href="../php/McLaren.php"><img src="../images/mclaren-logo.png" alt="McLaren"></a>
+        <a href="../php/Ford.php"><img src="../images/ford-logo.jpg" alt="Ford"></a>
+        <a href="../php/Chevrolet.php"><img src="../images/Chevrolet-logo.webp" alt="Chevrolet"></a>
+    </div>
+
     <style>
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            background-color: black; /* Crna pozadina ispod videa */
+        }
+
+        .background-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .background-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .background-video {
+                display: none;
+            }
+
+            .background-image {
+                display: block;
+            }
+        }
+
         /* Dodatni stilovi za hover dropdown */
         .dropdown-submenu:hover .submenu {
-        display: block;
-        left: 100%; /* Pomicanje submenija na desnu stranu */
-        top: 50%; /* Postavljanje na istu visinu kao i roditeljski li element */
+            display: block;
+            left: 100%; /* Pomicanje submenija na desnu stranu */
+            top: 50%; /* Postavljanje na istu visinu kao i roditeljski li element */
         }
-    
+
+        .manufacturer-logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .manufacturer-logos a {
+            display: block;
+        }
+
+        .manufacturer-logos img {
+            display: block;
+            height: 120px;
+            height: auto; /* Omogućuje responzivnost */
+        }
+
+        .manufacturer-logos a {
+            display: block;
+            height: 120px; /* Postavljanje fiksne visine */
+        }
+
+        .manufacturer-logos img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        .search-by-manufacturer {
+            background-color: black; /* Crna pozadina */
+            padding: 10px; /* Dodaj padding za bolju vidljivost */
+            text-align: center; /* Centriraj tekst */
+        }
+
+        .manufacturer-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black; /* Postavljanje crne pozadine na cijelu stranicu */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .car-details {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white; /* Bijeli tekst kako bi bio vidljiv na slici pozadine */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Prozirna crna pozadina za overlay */
+        }
+
+        .text-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%; /* Puni širinu */
+            height: 100%; /* Puna visina */
+            padding: 20px; /* Dodajte odgovarajući padding oko teksta */
+            border-radius: 10px; /* Dodajte zaobljenje rubova okvira */
+            color: white; /* Bijeli tekst kako bi bio vidljiv na pozadini */
+            text-align: center;
+        }
     </style>
 
 </body>
