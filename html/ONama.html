@@ -59,6 +59,10 @@
         <div class="overlay">
             <div class="text-container">
                 <div class="car-details">
+                    <br><br><br><br><br><br>
+                    <br><br><br><br><br><br>
+                    <br><br><br><br><br><br>
+                    <br><br><br><br><br><br>
                     <div class="car-mileage">Mura Exotic Motovars je prvi specijalizirani brend za prodaju sportskih i luksuznih automobila u Hrvatskoj s vlastitim voznim parkom na zagrebačkim i riječkim tablicama.</div>
                     <div class="car-mileage">Naši automobili su osigurani obveznim i kasko osiguranjem, imaju svu zakonski potrebnu opremu kroz sva godišnja doba (ljetne i zimske gume, protupožarni aparat, itd.), te se njihova ispravnost provjerava prije i poslije svakoe probne vožnje.</div>
                     <div class="car-mileage">Naše tržišno pozicioniranje se dominantno odnosi na prodaju vozila za pravne i privatne osobe.</div>
@@ -213,6 +217,8 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.7); /* Prozirna crna pozadina za overlay */
+            overflow-y: auto; /* Omogućava vertikalni scrollbar ako je potrebno */
+
         }
 
         .text-container {
@@ -220,17 +226,20 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100%; /* Puni širinu */
+            width: 80%; /* Puni širinu */
             height: 100%; /* Puna visina */
             padding: 20px; /* Dodajte odgovarajući padding oko teksta */
             border-radius: 10px; /* Dodajte zaobljenje rubova okvira */
             color: white; /* Bijeli tekst kako bi bio vidljiv na pozadini */
             text-align: center;
-        }
+            overflow: visible; /* Omogućuje vidljivost teksta izvan granica */
+            }
 
         .car-mileage {
-            font-size: 20px; /* Originalna veličina je bila 16px*/
-            margin-bottom: 5px;
+            font-size: 15px; /* Originalna veličina je bila 16px*/
+            margin-bottom: 10px;
+            white-space: pre-line; /* Dodano kako bi se očuvali prelasci u novi red unutar teksta */
+
         }
 
     </style>
