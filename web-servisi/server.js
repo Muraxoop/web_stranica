@@ -33,7 +33,7 @@ app.get('/inventar/:id', function (request, response) {
     if (!vozilo_id) {
         return response.status(400).send({ error: true, message: 'Molim dajte ID automobila' });
     }
-    dbConn.query('SELECT * FROM Inventar WHERE VoziloID=?', vozilo_id, function (error, results, fields) {
+    dbConn.query('SELECT * FROM Inventar WHERE ID=?', vozilo_id, function (error, results, fields) {
         if (error) throw error;
         return response.send({ error: false, data: results[0], message: 'Podaci o automobilu s ID-om ' + vozilo_id });
     });
@@ -45,7 +45,7 @@ app.delete('/inventar/:id', function (request, response) {
     if (!vozilo_id) {
         return response.status(400).send({ error: true, message: 'Molim dajte ID automobila' });
     }
-    dbConn.query('DELETE FROM Inventar WHERE VoziloID = ?', vozilo_id, function (error, results, fields) {
+    dbConn.query('DELETE FROM Inventar WHERE ID = ?', vozilo_id, function (error, results, fields) {
         if (error) throw error;
         if (results.affectedRows === 0) {
             return response.send({ error: true, message: 'Automobil nije pronađen.' });
@@ -74,7 +74,7 @@ app.put('/inventar/:id', function (request, response) {
     var model = request.body.Model;
     var godinaProizvodnje = request.body.GodinaProizvodnje;
 
-    dbConn.query('UPDATE Inventar SET Proizvodac=?, Model=?, GodinaProizvodnje=? WHERE VoziloID=?',
+    dbConn.query('UPDATE Inventar SET Proizvodac=?, Model=?, GodinaProizvodnje=? WHERE ID=?',
         [proizvodac, model, godinaProizvodnje, vozilo_id], function (error, results, fields) {
             if (error) throw error;
             return response.send({ error: false, data: results, message: 'Ažuriran automobil s ID-om ' + vozilo_id });

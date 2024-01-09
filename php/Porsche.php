@@ -99,7 +99,7 @@ if (!empty($row["Slika"])) {
         <div class="car-mileage">Vrsta pogona: <?php echo isset($row["VrstaPogona"]) ? $row["VrstaPogona"] : ''; ?></div>
         <div class="car-mileage">Maksimalna brzina: <?php echo isset($row["MaksimalnaBrzina"]) ? $row["MaksimalnaBrzina"] . ' km/h' : ''; ?></div>
         <div class="car-mileage">Oprema: <?php echo isset($row["Oprema"]) ? $row["Oprema"] : ''; ?></div>
-
+        <div class="car-mileage">Opis: Osnivatelj Porschea je Ferdinand Porsche. Osnovao ga je 1931. Zanimljivost je da je Porsche izradio tenk za 2. Svijetski rat.</div>
     </div>
 </div>
 <br/>
