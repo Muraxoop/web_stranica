@@ -82,6 +82,6 @@ app.put('/inventar/:id', function (request, response) {
 });
 
 // Postavljanje porta
-app.listen(port, function () {
-    console.log(`Node app is running on port ${port}`);
+app.listen(3800, function () {
+    console.log(`Node app is running on port ${3800}`);
 });
